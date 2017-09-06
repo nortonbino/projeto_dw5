@@ -2,27 +2,6 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.short-box{
-	float: left;
-	height: 320px;
-    width: 410px;
-    border: 5px solid gray;
-    padding: 10px;
-    margin: 10px;	
-    background-color: rgba(33,37,41,0.7);
-    color: white;
-}
-
-.long-box{
-	text-align: center;
-    border: 5px solid gray;
-    padding: 10px;
-    margin: 10px;	
-    background-color: rgba(33,37,41,0.7);
-    color: white;
-    overflow: hidden;
-}
-
 .image{
 
 	height: 50px;
