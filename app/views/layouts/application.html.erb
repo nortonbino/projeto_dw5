@@ -11,18 +11,6 @@
     <!-- Bootstrap core CSS -->
     <link href="../assets/stylesheet/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Custom styles for this template -->
-    <style>
-      body {
-        padding-top: 54px;
-      }
-      @media (min-width: 992px) {
-        body {
-          padding-top: 56px;
-        }
-      }
-
-    </style>
 
     <title>ProjetoDw5</title>
     <%= csrf_meta_tags %>
@@ -32,10 +20,17 @@
   </head>
 
   <body>
-
-  <div>
-    <%= render 'navbar' %>
-    <%= yield %>
+<div id="wrapper">
     
+    <%= render 'navbar' %>
+
+
+<div id="page-content-wrapper">
+  <div class="container-fluid">  
+    <%= yield %>
+  </div>
+</div>
+
+</div>
   </body>
 </html>
