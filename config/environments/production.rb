@@ -1,8 +1,5 @@
 Rails.application.configure do
-set :stage, :production
 
-server '67.205.162.131', roles: %w(app web db), primary: true, user: 'deployer'
-set :rails_env, "production"
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
