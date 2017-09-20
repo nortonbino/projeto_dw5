@@ -7,11 +7,15 @@
                 <li>
                     <%= link_to "Sign In", new_user_session_path %>
                 </li>
+                <% if current_user %>
                 <li>
                     <%= link_to('Dashboard', '/dashboard') %>        
                 </li>
+                <% end %>
+                <% if current_user %>
                 <li>
- 	 				<%= link_to('Logout', destroy_user_session_path, method: :delete) %>        
-  				</li>
+                    <%= link_to('Logout', destroy_user_session_path, method: :delete) %>        
+                </li>
+<% end %>
                 
 
