@@ -1,12 +1,15 @@
-ul {
- border: 1px solid black;
+.content-box {
+ border: 1px solid #428bca;
  border-radius: 5px;
  width: 200px;
  list-style: none; 
- text-decoration: none;
+ background: #428bca;
+ float: left;
+ margin-right: 10px;
 }
 
-h3, p{
+.content-box li h3, .content-box li p{
+ 
  text-decoration: none;
- color: black;
+ color: white;
 }
