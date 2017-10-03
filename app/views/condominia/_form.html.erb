@@ -1,0 +1,32 @@
+<%= form_with(model: condominium, local: true) do |form| %>
+  <% if condominium.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(condominium.errors.count, "error") %> prohibited this condominium from being saved:</h2>
+
+      <ul>
+      <% condominium.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :condominium_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :number_proprieties %>
+    <%= form.number_field :number_proprieties, id: :condominium_number_proprieties %>
+  </div>
+
+  <div class="field">
+    <%= form.label :address %>
+    <%= form.text_area :address, id: :condominium_address %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

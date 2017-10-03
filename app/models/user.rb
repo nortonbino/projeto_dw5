@@ -5,4 +5,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
          validates :password, :length => { :minimum => 6 }
+
+   has_many :condominium
 end

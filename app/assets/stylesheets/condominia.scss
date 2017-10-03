@@ -1,0 +1,28 @@
+// Place all the styles related to the Condominia controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.condominia-list{
+    padding: 10px;
+    background: #428bca;
+    border-radius: 5px;
+    width: 250px; 
+    text-align: center;
+    color: white;
+    float: left;
+    margin-left: 10px;
+}
+
+/*!
+* Condominia show 
+*/
+
+.condominia-title{
+	padding: 10px;
+    background: #428bca;
+    border-radius: 5px;
+    width: 90%; 
+    text-align: center;
+    color: white;
+    margin-left: 10px;
+}
