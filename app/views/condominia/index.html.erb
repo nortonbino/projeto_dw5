@@ -4,27 +4,25 @@
 
 <h1>Your condominiuns</h1>
 
-  
-    <% @condominia.each do |condominium| %>
-      <% if condominium.user == current_user %>
-      <div class="condominia-list">
 
-        <h3>Name</h3>
-          <p><%= condominium.name %></p>
-        
-        <h3>Number proprieties</h3>
-          <p><%= condominium.number_proprieties %></p>
-        
-        <h3>Address</h3>
-          <p><%= condominium.address %></p>
-        
-        <h3 colspan="3"></h3>
-          <p><%= link_to 'Show', condominium %></p>
-          <p><%= link_to 'Edit', edit_condominium_path(condominium) %></p>
-          <p><%= link_to 'Destroy', condominium, method: :delete, data: { confirm: 'Are you sure?' } %></p>
-        
-      </div>
-       <% end %>
-    <% end %>
+<% @condominia.each do |condominium| %>
+<% if condominium.user == current_user %>
+  <div class="condominia-list">
 
+    <h3>Name</h3>
+    <p><%= condominium.name %></p>
 
+    <h3>Number proprieties</h3>
+    <p><%= condominium.number_proprieties %></p>
+
+    <h3>Address</h3>
+    <p><%= condominium.address %></p>
+
+    <h3 colspan="3"></h3>
+    <p><%= link_to 'Show', condominium %></p>
+    <p><%= link_to 'Edit', edit_condominium_path(condominium) %></p>
+    <p><%= link_to 'Destroy', condominium, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+
+  </div>
+<% end %>
+<% end %>

@@ -4,6 +4,7 @@ class CreateCondominia < ActiveRecord::Migration[5.1]
       t.string :name
       t.integer :number_proprieties
       t.text :address
+      t.references :user
 
       t.timestamps
     end

@@ -2,55 +2,42 @@ class FeesController < ApplicationController
   before_action :authenticate_user!
 
   before_action :set_fee, only: [:show, :edit, :update, :destroy]
-
+  before_action :set_condominium
 
   # GET /fees
   # GET /fees.json
   def index
-    @fees = Fee.all
+    @fees = @condominium.fees
   end
 
-  # GET /fees/1
-  # GET /fees/1.json
   def show
   end
 
-  # GET /fees/new
   def new
-    @fee = Fee.new
+    @fee = @condominium.fees.build
   end
 
   # GET /fees/1/edit
   def edit
   end
 
-  # POST /fees
-  # POST /fees.json
   def create
-    @fee = Fee.new(fee_params)
+    @fee =  @condominium.fees.build(fee_params)
 
-    respond_to do |format|
-      if @fee.save
-        format.html { redirect_to @fee, notice: 'Fee was successfully created.' }
-        format.json { render :show, status: :created, location: @fee }
+    if @fee.save
+        flash[:success] = 'Fee was successfully created.'
+        redirect_to @condominium
       else
-        format.html { render :new }
-        format.json { render json: @fee.errors, status: :unprocessable_entity }
-      end
+        render :new
     end
   end
 
-  # PATCH/PUT /fees/1
-  # PATCH/PUT /fees/1.json
   def update
-    respond_to do |format|
       if @fee.update(fee_params)
-        format.html { redirect_to @fee, notice: 'Fee was successfully updated.' }
-        format.json { render :show, status: :ok, location: @fee }
+        flash[:success] = 'Fee was successfully updated.'
+        redirect_to @fee
       else
-        format.html { render :edit }
-        format.json { render json: @fee.errors, status: :unprocessable_entity }
-      end
+        render :edit
     end
   end
 
@@ -58,16 +45,18 @@ class FeesController < ApplicationController
   # DELETE /fees/1.json
   def destroy
     @fee.destroy
-    respond_to do |format|
-      format.html { redirect_to fees_url, notice: 'Fee was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+      flash[:success] = 'Fee was successfully destroyed.'
+      redirect_to fees_url
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_fee
-      @fee = Fee.find(params[:id])
+      @fee = @condominium.fees.find(params[:id])
+    end
+
+    def set_condominium
+      @condominium = Condominium.find(params[:condominium_id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

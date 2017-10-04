@@ -1,4 +1,4 @@
-<%= form_with(model: fee, local: true) do |form| %>
+<%= form_with(scope: :fee, url: [@condominium, @fee], local: true) do |form| %>
   <% if fee.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(fee.errors.count, "error") %> prohibited this fee from being saved:</h2>

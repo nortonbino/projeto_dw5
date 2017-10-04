@@ -1,42 +1,39 @@
 class CondominiaController < ApplicationController
   before_action :authenticate_user!
-
   before_action :set_condominium, only: [:show, :edit, :update, :destroy]
 
-  # GET /condominia
-  # GET /condominia.json
   def index
     @condominia = Condominium.all
   end
 
-  # GET /condominia/1
-  # GET /condominia/1.json
   def show
-        @fees = Fee.all
+    @fees = @condominium.fees 
   end
 
-  # GET /condominia/new
+  def month_fee(date)
+    if date.strftime("%m%Y") == Date.today.strftime("%m%Y")
+      
+    end
+  end
+
+
   def new
-    @condominium = current_user.condominium.build
+    @condominium = current_user.condominia.build
   end
 
-  # GET /condominia/1/edit
   def edit
   end
 
-  # POST /condominia
-  # POST /condominia.json
-  def create
-    @condominium = current_user.condominium.build(condominium_params)
 
-    respond_to do |format|
-      if @condominium.save
-        format.html { redirect_to @condominium, notice: 'Condominium was successfully created.' }
-        format.json { render :show, status: :created, location: @condominium }
-      else
-        format.html { render :new }
-        format.json { render json: @condominium.errors, status: :unprocessable_entity }
-      end
+  def create
+    @condominium = current_user.condominia.build(condominium_params)
+
+    if @condominium.save
+        flash[:success] = 'Condominium was successfully created.'
+        redirect_to @condominium
+    else
+        flash[:error] = 'Condominium was successfully created.'
+        render :new 
     end
   end
 

@@ -6,5 +6,5 @@ class User < ApplicationRecord
 
          validates :password, :length => { :minimum => 6 }
 
-   has_many :condominium
+   has_many :condominia
 end
