@@ -7,15 +7,9 @@ class CondominiaController < ApplicationController
   end
 
   def show
-    @fees = @condominium.fees 
+    @fees = @condominium.fees
+    @my_date = params[:date].nil? ? Date.today : DateTime.new(params[:date][:year].to_i, params[:date][:month].to_i)
   end
-
-  def month_fee(date)
-    if date.strftime("%m%Y") == Date.today.strftime("%m%Y")
-      
-    end
-  end
-
 
   def new
     @condominium = current_user.condominia.build

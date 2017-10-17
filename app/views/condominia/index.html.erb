@@ -1,4 +1,4 @@
-<%= link_to 'New Condominium', new_condominium_path %>
+<%= button_to 'New Condominium', new_condominium_path, :method => :get %>
 
 <p id="notice"><%= notice %></p>
 
@@ -19,9 +19,9 @@
     <p><%= condominium.address %></p>
 
     <h3 colspan="3"></h3>
-    <p><%= link_to 'Show', condominium %></p>
-    <p><%= link_to 'Edit', edit_condominium_path(condominium) %></p>
-    <p><%= link_to 'Destroy', condominium, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+    <p><%= button_to 'Show', condominium, :method => :get %></p>
+    <p><%= button_to 'Edit', edit_condominium_path(condominium), :method => :get %></p>
+    <p><%= button_to 'Destroy', condominium, method: :delete, data: { confirm: 'Are you sure?' } %></p>
 
   </div>
 <% end %>

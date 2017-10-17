@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   
-
   resources :condominia do
   	resources :fees
   end

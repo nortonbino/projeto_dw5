@@ -18,8 +18,8 @@
   <%= @condominium.address %>
 </p>
 
-<%= link_to 'Edit', edit_condominium_path(@condominium) %> |
-<%= link_to 'Back', condominia_path %>
+<%= button_to 'Edit', edit_condominium_path(@condominium), :method => :get %>
+<%= button_to 'Back', condominia_path, :method => :get %>
 
 </div>
 
@@ -27,9 +27,16 @@
 
 <div class="condominia-title">
 
-<h1>Fees <%= Date.today.strftime("%m / %Y") %></h1>
 
+<form>
 
+    <%= select_date(@my_date, start_year: Date.today.year - 100, end_year: Date.today.year + 5, order: [:month, :year]) %>
+
+    <%= button_to 'Buscar' %>
+
+</form>
+
+<h1>Fees <%= @my_date.strftime("%m / %Y") %></h1>
 
 <table>
   <thead>
@@ -43,27 +50,30 @@
   </thead>
 
     <% @value ||= 0 %>
-  <tbody>
+  <tbody>    
     <% @fees.each do |fee| %>
-      <% if fee.created_at.strftime("%m%Y") == Date.today.strftime("%m%Y") %>
+
+
+      <% if fee.created_at.strftime("%m%Y") <= @my_date.strftime("%m%Y") && fee.lastinstallment.strftime("%m%Y") > @my_date.strftime("%m%Y") %>
       <tr>
         <td><%= fee.name %></td>
         <td><%= fee.description %></td>
         <td><%= fee.installment %></td>
         <td><%= fee.value %></td>
-        <td><%= fee.created_at.strftime("%m/%Y") %></td>
-        <td><%= link_to 'Show', [@condominium, fee] %></td>
-        <td><%= link_to 'Edit', edit_condominium_fee_path(@condominium, fee) %></td>
-        <td><%= link_to 'Destroy', [@condominium, fee], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= button_to 'Show', [@condominium, fee], :method => :get %></td>
+        <td><%= button_to 'Edit', edit_condominium_fee_path(@condominium, fee), :method => :get %></td>
+        <td><%= button_to 'Destroy', [@condominium, fee], method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
-        <% @value += fee.value %>    
+        <% @value += fee.value %>   
       <% end %>
     <% end %>
   </tbody>
 </table>
-      <h2> Value per propriety <%= @value %> </h2>
+      <h2> Value per propriety <%= @value/@condominium.number_proprieties %> </h2>
 <br>
 
-<%= link_to 'New Fee', new_condominium_fee_path(@condominium) %>
+<%= button_to 'New Fee', new_condominium_fee_path(@condominium), :method => :get %>
 
 </div>
+
+

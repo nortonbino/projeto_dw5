@@ -1,9 +1,8 @@
 class FeesController < ApplicationController
   before_action :authenticate_user!
 
-  before_action :set_fee, only: [:show, :edit, :update, :destroy]
   before_action :set_condominium
-
+  before_action :set_fee, only: [:show, :edit, :update, :destroy]
   # GET /fees
   # GET /fees.json
   def index
@@ -23,6 +22,7 @@ class FeesController < ApplicationController
 
   def create
     @fee =  @condominium.fees.build(fee_params)
+    @fee.lastinstallment = Date.today + @fee.installment.months - 1
 
     if @fee.save
         flash[:success] = 'Fee was successfully created.'
@@ -34,8 +34,10 @@ class FeesController < ApplicationController
 
   def update
       if @fee.update(fee_params)
+        @fee.lastinstallment = @fee.created_at + @fee.installment.months - 1
+        @fee.save
         flash[:success] = 'Fee was successfully updated.'
-        redirect_to @fee
+        redirect_to condominium_fee_path
       else
         render :edit
     end
@@ -46,17 +48,17 @@ class FeesController < ApplicationController
   def destroy
     @fee.destroy
       flash[:success] = 'Fee was successfully destroyed.'
-      redirect_to fees_url
+      redirect_to @condominium
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
+      def set_condominium
+      @condominium = Condominium.find(params[:condominium_id])
+      end
+      
     def set_fee
       @fee = @condominium.fees.find(params[:id])
-    end
-
-    def set_condominium
-      @condominium = Condominium.find(params[:condominium_id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
