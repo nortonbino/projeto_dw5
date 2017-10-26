@@ -18,7 +18,6 @@ class CondominiaController < ApplicationController
   def edit
   end
 
-
   def create
     @condominium = current_user.condominia.build(condominium_params)
 
@@ -26,33 +25,24 @@ class CondominiaController < ApplicationController
         flash[:success] = 'Condominium was successfully created.'
         redirect_to @condominium
     else
-        flash[:error] = 'Condominium was successfully created.'
         render :new 
     end
   end
 
-  # PATCH/PUT /condominia/1
-  # PATCH/PUT /condominia/1.json
   def update
-    respond_to do |format|
+
       if @condominium.update(condominium_params)
-        format.html { redirect_to @condominium, notice: 'Condominium was successfully updated.' }
-        format.json { render :show, status: :ok, location: @condominium }
+        flash[:success] =  'Condominium was successfully updated.' 
+        redirect_to @condominium
       else
-        format.html { render :edit }
-        format.json { render json: @condominium.errors, status: :unprocessable_entity }
-      end
+        render :edit 
     end
   end
 
-  # DELETE /condominia/1
-  # DELETE /condominia/1.json
   def destroy
     @condominium.destroy
-    respond_to do |format|
-      format.html { redirect_to condominia_url, notice: 'Condominium was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    flash[:success] = 'Condominium was successfully destroyed.'
+    redirect_to condominia_url
   end
 
   private
@@ -64,5 +54,14 @@ class CondominiaController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def condominium_params
       params.require(:condominium).permit(:name, :number_proprieties, :address)
+    end
+
+    def search(name)
+      @condominium.fees.each do |fee|
+        if()
+          @fees << fee
+        end
+      end
+      @fees
     end
 end

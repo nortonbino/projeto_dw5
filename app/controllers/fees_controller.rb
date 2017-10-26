@@ -3,8 +3,7 @@ class FeesController < ApplicationController
 
   before_action :set_condominium
   before_action :set_fee, only: [:show, :edit, :update, :destroy]
-  # GET /fees
-  # GET /fees.json
+
   def index
     @fees = @condominium.fees
   end
@@ -43,12 +42,14 @@ class FeesController < ApplicationController
     end
   end
 
-  # DELETE /fees/1
-  # DELETE /fees/1.json
   def destroy
     @fee.destroy
       flash[:success] = 'Fee was successfully destroyed.'
       redirect_to @condominium
+  end
+
+  def searchByName(name)
+    
   end
 
   private
@@ -66,7 +67,4 @@ class FeesController < ApplicationController
       params.require(:fee).permit(:value, :installment, :name, :description)
     end
 
-    def current_date
-      
-    end
 end

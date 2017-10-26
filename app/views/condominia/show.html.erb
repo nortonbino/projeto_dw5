@@ -25,14 +25,14 @@
 
 <p id="notice"><%= notice %></p>
 
+
+
 <div class="condominia-title">
-
-
 <form>
 
     <%= select_date(@my_date, start_year: Date.today.year - 100, end_year: Date.today.year + 5, order: [:month, :year]) %>
 
-    <%= button_to 'Buscar' %>
+    <%= button_to 'Search' %>
 
 </form>
 
@@ -52,7 +52,6 @@
     <% @value ||= 0 %>
   <tbody>    
     <% @fees.each do |fee| %>
-
 
       <% if fee.created_at.strftime("%m%Y") <= @my_date.strftime("%m%Y") && fee.lastinstallment.strftime("%m%Y") > @my_date.strftime("%m%Y") %>
       <tr>

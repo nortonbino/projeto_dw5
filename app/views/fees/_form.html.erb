@@ -12,18 +12,19 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :value %>
-    <%= form.text_field :value, id: :fee_value %>
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :fee_name %>
+  </div>
+
+  <div class="field">
+ 
+    <%= form.label :value %> <p>must be the value per fee, and not the total value</p>
+    <%= form.text_field :value, id: :fee_value %> 
   </div>
 
   <div class="field">
     <%= form.label :installment %>
-    <%= form.number_field :installment, id: :fee_installment %>
-  </div>
-
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name, id: :fee_name %>
+    <%= form.number_field :installment, id: :fee_installment, :value => 1 %>
   </div>
 
   <div class="field">
