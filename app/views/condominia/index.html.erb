@@ -4,10 +4,12 @@
 
 <h1>Your condominiuns</h1>
 
-
 <% @condominia.each do |condominium| %>
 <% if condominium.user == current_user %>
+
   <div class="condominia-list">
+  
+    <%= image_tag(condominium.avatar.thumb.url) %>
 
     <h3>Name</h3>
     <p><%= condominium.name %></p>

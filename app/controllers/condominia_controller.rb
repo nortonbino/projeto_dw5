@@ -7,10 +7,13 @@ class CondominiaController < ApplicationController
   end
 
   def show
-    @fees = @condominium.fees
     @my_date = params[:date].nil? ? Date.today : DateTime.new(params[:date][:year].to_i, params[:date][:month].to_i)
+    @fees = if params[:term]
+      @condominium.fees.where('name LIKE ?', "%#{params[:term]}%")
+    else
+     @condominium.fees
+    end
   end
-
   def new
     @condominium = current_user.condominia.build
   end
@@ -20,7 +23,6 @@ class CondominiaController < ApplicationController
 
   def create
     @condominium = current_user.condominia.build(condominium_params)
-
     if @condominium.save
         flash[:success] = 'Condominium was successfully created.'
         redirect_to @condominium
@@ -30,7 +32,6 @@ class CondominiaController < ApplicationController
   end
 
   def update
-
       if @condominium.update(condominium_params)
         flash[:success] =  'Condominium was successfully updated.' 
         redirect_to @condominium
@@ -45,6 +46,10 @@ class CondominiaController < ApplicationController
     redirect_to condominia_url
   end
 
+  def find_fees
+        @fees = @condominium.fees.where("name = ?", "teste")
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_condominium
@@ -53,15 +58,7 @@ class CondominiaController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def condominium_params
-      params.require(:condominium).permit(:name, :number_proprieties, :address)
+      params.require(:condominium).permit(:name, :number_proprieties, :address, :avatar)
     end
 
-    def search(name)
-      @condominium.fees.each do |fee|
-        if()
-          @fees << fee
-        end
-      end
-      @fees
-    end
 end

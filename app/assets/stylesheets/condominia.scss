@@ -2,6 +2,10 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+/*!
+* Condominia Index 
+*/
+
 .condominia-list{
     padding: 10px;
     background: #428bca;
@@ -10,7 +14,13 @@
     text-align: center;
     color: white;
     float: left;
-    margin-left: 10px;
+    margin: 10px;
+}
+
+
+.condominium-avatar {
+  width: 20px;
+  height: 100%;  
 }
 
 /*!
@@ -26,3 +36,4 @@
     color: white;
     margin-left: 10px;
 }
+

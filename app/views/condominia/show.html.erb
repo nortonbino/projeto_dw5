@@ -3,6 +3,8 @@
 	
 <p id="notice"><%= notice %></p>
 
+  <%= image_tag(@condominium.avatar.url) %>
+
 <p>
   <strong>Name:</strong>
   <%= @condominium.name %>
@@ -26,14 +28,12 @@
 <p id="notice"><%= notice %></p>
 
 
-
 <div class="condominia-title">
+
 <form>
-
+    <%= text_field_tag :term %>
     <%= select_date(@my_date, start_year: Date.today.year - 100, end_year: Date.today.year + 5, order: [:month, :year]) %>
-
     <%= button_to 'Search' %>
-
 </form>
 
 <h1>Fees <%= @my_date.strftime("%m / %Y") %></h1>
@@ -51,9 +51,10 @@
 
     <% @value ||= 0 %>
   <tbody>    
+
     <% @fees.each do |fee| %>
 
-      <% if fee.created_at.strftime("%m%Y") <= @my_date.strftime("%m%Y") && fee.lastinstallment.strftime("%m%Y") > @my_date.strftime("%m%Y") %>
+<% if fee.created_at.strftime("%m%Y") <= @my_date.strftime("%m%Y") && fee.lastinstallment.strftime("%m%Y") > @my_date.strftime("%m%Y") %>
       <tr>
         <td><%= fee.name %></td>
         <td><%= fee.description %></td>
@@ -64,7 +65,7 @@
         <td><%= button_to 'Destroy', [@condominium, fee], method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
         <% @value += fee.value %>   
-      <% end %>
+  <% end %>
     <% end %>
   </tbody>
 </table>
