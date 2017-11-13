@@ -3,9 +3,44 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .image{
-	height: 50px;
+	   height: 50px;
     width: 50px;
     display: block;
     margin-left: auto;
     margin-right: auto;
+}
+
+.imageBar{
+  top: 0;
+  height: 400px;
+  width: 110%;
+      opacity: 0.75;
+}
+
+.button {
+    background-color: #FF9933;
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 12px;
+}
+
+.button:hover {
+    background-color: white; /* Green */
+    color: #FF9933;
+    text-decoration: none;
+}
+
+.circle-button-admin{
+    background-color: #FF9933;
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 50%;
 }

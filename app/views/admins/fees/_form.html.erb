@@ -1,0 +1,38 @@
+<%= form_with(model: fee, url: admins_condominium_fees_path(@condominium)) do |form| %>
+  <% if fee.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(fee.errors.count, "error") %> prohibited this fee from being saved:</h2>
+
+      <ul>
+      <% fee.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :fee_name %>
+  </div>
+
+  <div class="field">
+ 
+    <%= form.label :value %> <p>must be the value per fee, and not the total value</p>
+    <%= form.text_field :value, id: :fee_value %> 
+  </div>
+
+  <div class="field">
+    <%= form.label :installment %>
+    <%= form.number_field :installment, id: :fee_installment, :value => 1 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_area :description, id: :fee_description %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

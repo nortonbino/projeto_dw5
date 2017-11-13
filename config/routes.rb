@@ -1,10 +1,26 @@
 Rails.application.routes.draw do
   
-  resources :condominia do
-  	resources :fees
+  namespace :residents do
+    get 'dashboard/index'
   end
+
+  devise_for :residents
+  namespace :residents do
+      root to: 'dashboard#index'
+      get 'dashboard/:fee_id', to: 'dashboard#show'
+  end
+
+
+  devise_for :admins
   
-  devise_for :users
+  namespace :admins do
+
+  	
+    resources :condominia do
+      resources :fees
+      resources :residents
+    end
+  end
 
   root to: 'home#index'
 

@@ -11,12 +11,16 @@
     <!-- Bootstrap core CSS -->
     <link href="../assets/stylesheet/bootstrap.min.css" rel="stylesheet">
 
-
     <title>ProjetoDw5</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+<style type="text/css"> 
+
+
+</style>
   </head>
 
   <body>
@@ -24,12 +28,17 @@
     
     <%= render 'layouts/navbar' %>
 
+    
+
        <p class="notice"><%= notice %></p>
        <p class="alert"><%= alert %></p>
 
 <div id="page-content-wrapper">
   <div class="container-fluid">  
     <%= yield %>
+
+
+
   </div>
 </div>
 

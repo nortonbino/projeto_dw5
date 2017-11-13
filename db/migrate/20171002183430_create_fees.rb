@@ -6,7 +6,8 @@ class CreateFees < ActiveRecord::Migration[5.1]
       t.string :name
       t.text :description
       t.references :condominium
-
+      t.date :lastinstallment
+      t.date :firstinstallment
       t.timestamps
     end
   end

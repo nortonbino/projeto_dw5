@@ -1,0 +1,41 @@
+<h1>Editing Condominium</h1>
+
+<%= form_with(model: @condominium, url: admins_condominium_path) do |form| %>
+  <% if @condominium.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@condominium.errors.count, "error") %> prohibited this condominium from being saved:</h2>
+
+      <ul>
+      <% condominium.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :condominium_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :number_proprieties %>
+    <%= form.number_field :number_proprieties, id: :condominium_number_proprieties, :value => 1 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :address %>
+    <%= form.text_area :address, id: :condominium_address %>
+  </div>
+
+  <div class="field">
+    <%= form.file_field :avatar %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+
+<%= link_to 'Show', admins_condominium_path(@condominium) %> |
+<%= link_to 'Back', admins_condominia_path %>

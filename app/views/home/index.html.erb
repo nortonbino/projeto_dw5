@@ -1,4 +1,4 @@
-
+<!--
 <div class="text-box">
 	<div id="image">
 		<%= image_tag("money.png", class: "image") %>
@@ -21,5 +21,16 @@
 	</div>
 <h3> Save your efforts with us!</h3>
 <p>You can manage your properties on an easy way </p>
+</div>
+-->
+<%= image_tag("rio_de_janeiro.jpg",  class: "imageBar") %>
+
+
+<div class="container">
+		    <% if(!current_admin) && (!current_resident) %>       	
+          <div class="waves-effect waves-light btn btn-signin-admin">
+            <%= link_to "Sign in as an Admin", new_admin_session_path  %>
+            </div>
+          <% end %>
 </div>
 

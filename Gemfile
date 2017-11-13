@@ -12,6 +12,9 @@ gem 'jbuilder',     '2.7.0'
 gem 'devise'
 gem "mini_magick"
 gem "pg"
+gem 'simple_form'
+gem 'materialize-sass'
+
 
 group :development, :test do
   gem 'sqlite3',      '1.3.13'

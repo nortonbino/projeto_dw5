@@ -1,0 +1,2 @@
+module Residents::DashboardHelper
+end
