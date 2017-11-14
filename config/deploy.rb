@@ -6,7 +6,7 @@ set :stages, ["production"]
 set :application,     'norton.tsi.pro.br'
 set :branch,          'production'
 
-set :admin,            'deployer'
+set :user,            'deployer'
 set :repo_url,        'git@github.com:nortonbino/projeto_dw5.git'
 set :keep_releases,   3
 
@@ -22,8 +22,8 @@ set :puma_workers,    1       # Change to match your CPU core count
 set :pty,             true    # is a pair of pseudo-devices, one of which, the slave, emulates a real text terminal device, the other of which, the master, provides the means by which a terminal emulator process controls the slave.
 set :use_sudo,        false   # not use sudo to run the comands
 set :deploy_via,      :remote_cache # allows you to cache your deployment repo to make deployment much faster.
-set :deploy_to,       "/home/#{fetch(:admin)}/apps/#{fetch(:application)}"
-set :ssh_options,     { forward_agent: true, admin: fetch(:admin), keys: %w(~/.ssh/id_rsa) } # Log in with ssh and private key
+set :deploy_to,       "/home/#{fetch(:user)}/apps/#{fetch(:application)}"
+set :ssh_options,     { forward_agent: true, user: fetch(:user), keys: %w(~/.ssh/id_rsa) } # Log in with ssh and private key
 
 set :puma_bind,       "unix://#{shared_path}/tmp/sockets/#{fetch(:application)}-puma.sock" # Bind the server to url
 set :puma_state,      "#{shared_path}/tmp/pids/puma.state" # Use path as the file to store the server info state.
