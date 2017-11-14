@@ -4,8 +4,8 @@ require "capistrano/deploy"
 
 # Include capistrano-rails
 require 'capistrano/rails'
-require 'capistrano/bundler'
 require 'capistrano/rvm'
+require 'capistrano/bundler'
 require 'capistrano/puma'
 require 'capistrano/rails/migrations'
 require 'capistrano/rails/assets'
