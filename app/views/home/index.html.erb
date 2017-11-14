@@ -1,36 +1,49 @@
-<!--
-<div class="text-box">
-	<div id="image">
-		<%= image_tag("money.png", class: "image") %>
-	</div>
-<h3> Save your money with us!</h3>
-<p>You can manage your properties without paying </p>
-</div>
-
-<div class="text-box">
-	<div class="image">
-		<%= image_tag("time.png", class: "image") %>
-	</div>
-<h3> Save your time with us!</h3>
-<p>You can manage your properties at home </p>
-</div>
-
-<div class="text-box" id="border-short-box">
-	<div class="image">
-		<%= image_tag("effort.png", class: "image") %>
-	</div>
-<h3> Save your efforts with us!</h3>
-<p>You can manage your properties on an easy way </p>
-</div>
--->
 <%= image_tag("rio_de_janeiro.jpg",  class: "imageBar") %>
 
+	<div class="container">
+			    <% if(!current_admin) && (!current_resident) %>       	
+	            <%= link_to "Sign in as an Admin", new_admin_session_path, class: "waves-effect waves-light btn orange darken-1" %>
 
-<div class="container">
-		    <% if(!current_admin) && (!current_resident) %>       	
-          <div class="waves-effect waves-light btn btn-signin-admin">
-            <%= link_to "Sign in as an Admin", new_admin_session_path  %>
-            </div>
-          <% end %>
-</div>
+	            <div style="float: right">
+	            <%= link_to "Sign in as an resident", new_resident_session_path, class: "waves-effect waves-light btn cyan darken-4" %>
+	            </div>
 
+	          <% end %>
+<div style="margin-top: 30px;">
+	
+    <div class="row">
+      <div class="col s12 m5">
+        <div class="card-panel teal orange darken-1">
+          <span class="white-text">I am a very simple card. I am good at containing small bits of information.
+          I am convenient because I require little markup to use effectively. I am similar to what is called a panel in other frameworks.
+          </span>
+        </div>
+      </div>
+      <div class="col s12 m5" style="float: right">
+        <div class="card-panel teal cyan darken-4">
+          <span class="white-text">I am a very simple card. I am good at containing small bits of information.
+          I am convenient because I require little markup to use effectively. I am similar to what is called a panel in other frameworks.
+          </span>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="col s12 m5">
+        <div class="card-panel teal orange darken-1">
+          <span class="white-text">I am a very simple card. I am good at containing small bits of information.
+          I am convenient because I require little markup to use effectively. I am similar to what is called a panel in other frameworks.
+          </span>
+        </div>
+      </div>
+      <div class="col s12 m5" style="float: right">
+        <div class="card-panel teal cyan darken-4">
+          <span class="white-text">I am a very simple card. I am good at containing small bits of information.
+          I am convenient because I require little markup to use effectively. I am similar to what is called a panel in other frameworks.
+          </span>
+        </div>
+      </div>
+    </div>
+ 	
+	</div>

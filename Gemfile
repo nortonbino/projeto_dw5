@@ -14,6 +14,7 @@ gem "mini_magick"
 gem "pg"
 gem 'simple_form'
 gem 'materialize-sass'
+gem 'materialize-form'
 
 
 group :development, :test do

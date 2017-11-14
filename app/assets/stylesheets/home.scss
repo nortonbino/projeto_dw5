@@ -2,22 +2,16 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.image{
-	   height: 50px;
-    width: 50px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-}
-
 .imageBar{
   top: 0;
-  height: 400px;
-  width: 110%;
-      opacity: 0.75;
+  margin-top: -15px;
+  height: 350px;
+  width: 100%;
+  opacity: 0.75;
 }
 
-.button {
+nav ul a.btn, nav ul a.btn-large, nav ul a.btn-large, nav ul a.btn-flat, nav ul a.btn-floating{
+    margin-top: 10px;
     background-color: #FF9933;
     border: none;
     color: white;
@@ -28,19 +22,70 @@
     border-radius: 12px;
 }
 
-.button:hover {
-    background-color: white; /* Green */
+nav ul a.btn:hover{
+    background-color: white; 
     color: #FF9933;
     text-decoration: none;
 }
 
-.circle-button-admin{
+
+.nav-wrapper{
     background-color: #FF9933;
-    border: none;
-    color: white;
-    text-align: center;
     text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    border-radius: 50%;
+}
+
+.brand-logo:hover{
+    text-decoration: none;
+}
+
+.btn.btn-signup{
+    margin-top: 10px;
+    background-color: #FF9933;
+    border-radius: 25px;
+    margin-right: 10px;
+}
+
+
+.btn:hover.btn-signup:hover{
+    background-color: white;
+    opacity: 0.7; 
+    color: #FF9933;
+    text-decoration: none;
+}
+
+.btn.btn-signin-admin{
+    background-color: #FF9933;
+    heigth: 200px;
+    color: white;
+}
+
+.btn:hover.btn-signin-admin:hover{
+    background-color: white;
+    opacity: 0.7; 
+    color: #FF9933;
+    text-decoration: none;
+}
+
+.btn.btn-signin-resident{
+    background-color: #253858;
+    heigth: 200px;
+    color: white;   
+    float: right;
+}
+
+.btn:hover.btn-signin-resident:hover{
+    background-color: white;
+    opacity: 0.7; 
+    color: #253858;
+    text-decoration: none;
+}
+
+.btn.btn-resident{
+    background-color: #253858;
+    color: white;   
+}
+
+.btn:hover.btn-resident:hover{
+    background-color: white; 
+    color: #253858;
 }

@@ -1,96 +1,43 @@
 
-<!--
-<div id="sidebar-wrapper">
-	<ul class="sidebar-nav">
-		<li class="sidebar-brand">
-    		<%=link_to "Mr.Condominia", root_path %>
-		</li>
-
-	    <% if(!current_admin) && (!current_resident) %>
-		<li>
-		    <%= link_to "Sign Up", new_admin_registration_path %>
-		</li>
-
-		<li>
-		    <%= link_to "Sign In", new_admin_session_path %>
-		</li>
-		<% end %>
-
-		<% if current_admin %>
-
-		<li>
-		    <%= link_to('Dashboard', admins_condominia_path) %>        
-		</li>
-
-		<li>
-		    <%= link_to('Profile', edit_admin_registration_path) %>        
-		</li>
-
-
-		<li>
-		    <%= link_to('Logout', destroy_admin_session_path, method: :delete) %>        
-		</li>
-<% end %>
-
-
-		<% if current_resident %>
-
-		<li>
-		    <%= link_to('Dashboard', residents_dashboard_index_path) %>        
-		</li>
-
-		<li>
-		    <%= link_to('Logout', destroy_resident_session_path, method: :delete) %>        
-		</li>
-<% end %>
-
-
-	</ul>
-</div> 
-
-
-<div>
-	<header>
-      <div class="navbar">
-        <ul class="nav">
-
-	    <% if(!current_admin) && (!current_resident) %>       	
-          <li class="item button">
-            <%= link_to "Sign Up as an Admin", new_admin_registration_path %>
-          </li>
-          <% end %>
-        </ul>
-
-        <div class="logo">
-          <img src="#">
-        </div>
-      </div>
-    </header>
-
-
-</div>
--->
-
   <nav>
-    <div class="nav-wrapper">
-      <a href="#" class="brand-logo">Mr.Condominia</a>
-      <ul id="nav-mobile" class="right hide-on-med-and-down">
-		<% if !current_admin %>        
+    <div class="nav-wrapper orange darken-1">
+    <%=link_to "Mr.Condominia", root_path, class: "brand-logo"%>
+      
+      <ul id="nav-mobile" class="right">
+		
+
+		<% if !current_admin and !current_resident %>        
         <li class="waves-effect waves-light btn btn-signup"><%= link_to "Sign Up as an Admin", new_admin_registration_path %></li>
         <% end %>
-<li>
+
+
 	<% if current_admin %>
-  <a class='dropdown-button btn' href='#' data-activates='dropdown1'>Drop Me!</a>
+<li>
+  <a class='dropdown-button btn' href='#' data-activates='dropdown1'><%= current_admin.email %></a>
   <li>
   <!-- Dropdown Structure -->
   <ul id='dropdown1' class='dropdown-content'>
     <li><%= link_to('Dashboard', admins_condominia_path) %> </li>
-    <li><a href="#!"><i class="material-icons">cloud</i>five</a></li>
+    <li><%= link_to('Profile', admins_condominia_path) %> </li>
+    <li><%= link_to('Logout', destroy_admin_session_path, method: :delete) %></li>
   </ul>
   </li>
-<% end %>
 </li>
-		
+<% end %>
+
+	<% if current_resident %>
+<li>
+  <a class='dropdown-button btn btn-resident' href='#' data-activates='dropdown1'><%= current_resident.email %></a>
+  <li>
+  <!-- Dropdown Structure -->
+  <ul id='dropdown1' class='dropdown-content'>
+    <li><%= link_to('Dashboard', residents_dashboard_index_path) %></li>
+    <li><%= link_to('Logout', destroy_resident_session_path, method: :delete) %></li>
+  </ul>
+  </li>
+</li>
+<% end %>
+	
       </ul>
     </div>
   </nav>

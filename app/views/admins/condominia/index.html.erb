@@ -1,30 +1,34 @@
+
+<div class="container new-condominium-btn">
 <%= button_to 'New Condominium', new_admins_condominium_path, :method => :get %>
-
-<p id="notice"><%= notice %></p>
-
-<h1>Your condominiuns</h1>
+</div>
 
 <% @condominia.each do |condominium| %>
-<% if condominium.admin == current_admin %>
 
-  <div class="condominia-list">
-  
-    <%= image_tag(condominium.avatar.thumb.url) %>
 
-    <h3>Name</h3>
-    <p><%= condominium.name %></p>
+       <div class="col s12 m7 container admin-card">
+    <div class="card horizontal">
+      <div class="card-image">
+        <%= image_tag(condominium.avatar.thumb.url) %>
+      </div>
+      <div class="card-stacked">
+        <div class="card-content">
+            <h5>Name</h5>
+            <p><%= condominium.name %></p>
 
-    <h3>Number proprieties</h3>
-    <p><%= condominium.number_proprieties %></p>
+            <h5>Number proprieties</h5>
+            <p><%= condominium.number_proprieties %></p>
 
-    <h3>Address</h3>
-    <p><%= condominium.address %></p>
+            <h5>Address</h5>
+            <p><%= condominium.address %></p>
+                </div>
 
-    <h3 colspan="3"></h3>
-    <p><%= button_to 'Show', admins_condominium_path(condominium), :method => :get %></p>
-    <p><%= button_to 'Edit', edit_admins_condominium_path(condominium), :method => :get %></p>
-    <p><%= button_to 'Destroy', admins_condominium_path(condominium), method: :delete, data: { confirm: 'Are you sure?' } %></p>
-
+                <div class="card-action">
+                <%= button_to 'Show', admins_condominium_path(condominium),  class: "btn  cyan darken-4", :method => :get %>
+                <%= button_to 'Edit', edit_admins_condominium_path(condominium),  class: "btn  cyan darken-4", :method => :get %>
+                <%= button_to 'Destroy', admins_condominium_path(condominium),  class: "btn  cyan darken-4", method: :delete, data: { confirm: 'Are you sure?' } %>
+        </div>
+      </div>
+    </div>
   </div>
-<% end %>
-<% end %>
+      <% end %>

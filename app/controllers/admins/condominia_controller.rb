@@ -59,6 +59,22 @@ class Admins::CondominiaController < ApplicationController
         @fees = @condominium.fees.where("name = ?", "teste")
   end
 
+  def send_email
+    @condominium = Condominium.find(params[:condominium_id])
+
+    @condominium.residents.each do |resident| 
+       CondominiumMailer.send_fees_email(resident).deliver_later
+    end
+    
+    
+    flash[:success] = 'Email enviado com sucesso'
+    redirect_back(fallback_location: root_path)
+  end
+
+  def residents
+    @residents = @condominium.residents
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_condominium
