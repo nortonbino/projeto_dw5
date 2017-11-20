@@ -2,6 +2,8 @@ class Condominium < ApplicationRecord
 	belongs_to :admin
 	has_many :fees
 	has_many :residents
+	has_many :messages
+
 
 	mount_uploader :avatar, AvatarUploader
 

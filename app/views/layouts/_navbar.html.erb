@@ -1,7 +1,9 @@
 
   <nav>
     <div class="nav-wrapper orange darken-1">
+    <div style="margin-left: 10px;">
     <%=link_to "Mr.Condominia", root_path, class: "brand-logo"%>
+    </div>
       
       <ul id="nav-mobile" class="right">
 		
@@ -18,7 +20,7 @@
   <!-- Dropdown Structure -->
   <ul id='dropdown1' class='dropdown-content'>
     <li><%= link_to('Dashboard', admins_condominia_path) %> </li>
-    <li><%= link_to('Profile', admins_condominia_path) %> </li>
+    <li><%= link_to('Profile',  edit_admin_registration_path) %> </li>
     <li><%= link_to('Logout', destroy_admin_session_path, method: :delete) %></li>
   </ul>
   </li>

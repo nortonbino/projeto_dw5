@@ -1,10 +1,11 @@
 class Admins::CondominiaController < ApplicationController
   before_action :authenticate_admin!
-
+  
+  before_action :set_admin
   before_action :set_condominium, only: [:show, :edit, :update, :destroy]
 
   def index
-    @condominia = Condominium.all
+    @condominia = @admin.condominia
   end
 
   def show
@@ -55,10 +56,6 @@ class Admins::CondominiaController < ApplicationController
     redirect_to admins_condominia_url
   end
 
-  def find_fees
-        @fees = @condominium.fees.where("name = ?", "teste")
-  end
-
   def send_email
     @condominium = Condominium.find(params[:condominium_id])
 
@@ -76,6 +73,10 @@ class Admins::CondominiaController < ApplicationController
   end
 
   private
+    def set_admin
+     @admin = current_admin
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_condominium
       @condominium = Condominium.find(params[:id])

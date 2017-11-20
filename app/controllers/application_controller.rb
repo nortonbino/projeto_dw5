@@ -1,9 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-
+  before_action :configure_permitted_parameters, if: :devise_controller?
   helper_method :current_condominium
-  protect_from_forgery with: :exception
- 
 
   def current_condominium
   	@current_condominium ||= Condominium.find(current_admin.condominium_id)
@@ -15,5 +13,12 @@ class ApplicationController < ActionController::Base
  
    def after_sign_out_path_for(resource)
      new_admin_session_path
+  end
+
+protected
+
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:name])
   end
 end

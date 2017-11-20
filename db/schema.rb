@@ -57,11 +57,11 @@ ActiveRecord::Schema.define(version: 20171113171554) do
   create_table "messages", force: :cascade do |t|
     t.string "text"
     t.integer "admin_id"
-    t.integer "resident_id"
+    t.integer "condominium_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["admin_id"], name: "index_messages_on_admin_id"
-    t.index ["resident_id"], name: "index_messages_on_resident_id"
+    t.index ["condominium_id"], name: "index_messages_on_condominium_id"
   end
 
   create_table "residents", force: :cascade do |t|

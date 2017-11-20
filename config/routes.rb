@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
-  
-  get 'messages/index'
+
 
   namespace :residents do
     get 'dashboard/index'
@@ -16,16 +15,20 @@ Rails.application.routes.draw do
   devise_for :admins
   
   namespace :admins do
-
-  	
+    
     resources :condominia do
       resources :fees
       resources :residents
+      resources :messages
       get "/send_email", to: 'condominia#send_email', as: :send_email
     end
 
   end
 
   root to: 'home#index'
+
+  mount ActionCable.server => '/cable'
+
+
 
 end

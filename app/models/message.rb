@@ -1,4 +1,8 @@
 class Message < ApplicationRecord
-  belongs_to :admin
-  belongs_to :resident
+  belongs_to :condominium
+
+  	def admin
+  		@admin = Admin.find(self.admin_id)
+  	end
+  private
 end
