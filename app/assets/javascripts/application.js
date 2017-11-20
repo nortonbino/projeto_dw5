@@ -10,10 +10,13 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require jquery
 //= require rails-ujs
 //= require turbolinks
-//= require_tree .
-//= require jquery
-//= require turbolinks
+
 //= require materialize-sprockets
 //= require materialize-form
+
+//= require action_cable
+//= require cable
+//= require messages
