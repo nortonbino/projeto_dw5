@@ -1,0 +1,13 @@
+<div class="row col-md-8 col-md-offset-2">
+  <h1>Condominium chat</h1>
+
+  <div class="panel panel-default">
+   
+      <div class="panel-body" id="messages">
+        <%= render "shared/messages/message" %>
+      </div>
+   
+  </div>
+
+  <%= render partial: 'shared/messages/message_form', locals: {message: @message}%>
+</div>

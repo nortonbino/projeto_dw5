@@ -1,0 +1,2 @@
+module Residents::MessagesHelper
+end
