@@ -3,7 +3,7 @@ class Admins::MessagesController < ApplicationController
   before_action :set_condominium
 
   def index
-  	@messages = Message.all
+  	@messages = @condominium.messages
   end
 
   def create

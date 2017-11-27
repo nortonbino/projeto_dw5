@@ -1,7 +1,8 @@
 # Place all the behaviors and hooks related to the matching controller here.
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
-App.messages = App.cable.subscriptions.create 'MessagesChannel',
+
+App.messages = App.cable.subscriptions.create { channel: "MessagesChannel", condominium_id: id},
 
   connected: ->
     console.log("connected")
@@ -10,7 +11,7 @@ App.messages = App.cable.subscriptions.create 'MessagesChannel',
     console.log("disconnected")
 
   received: (data) ->
-    $('#messages').append(@renderMessage(data))
+    $('#messages').append data['message']
 
   speak: (message) ->
     @perform 'speak', message: message
@@ -20,20 +21,8 @@ App.messages = App.cable.subscriptions.create 'MessagesChannel',
     "<p> <b>" + data.user + ": </b>" + data.message + "</p>"
 
 
-$(document).on 'turbolinks:load', ->
-  if $('#messages-index').length
-    $('#messages').animate
-          scrollTop: $('#messages')[0].scrollHeight
-    , 2000
-
 $(document).on 'submit', '#new_message', (event) ->
   message = $('#message_text').val()
   $('#message_text').val("")
   App.messages.speak(message)
   event.preventDefault()
-  setTimeout ->
-    $('input:submit').attr("disabled", false)
-  , 100
-  $('#messages').animate
-        scrollTop: $('#messages')[0].scrollHeight
-  , 2000

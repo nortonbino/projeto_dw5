@@ -9,8 +9,6 @@ class MessagesChannel < ApplicationCable::Channel
   end
 
   def speak(data)
-    current_admin.messages.create!(text: data['message'])
-    message = {user: current_admin.name, message: data['message']}
-    ActionCable.server.broadcast 'messages', message
+    Message.create! text: data['message']
   end
 end

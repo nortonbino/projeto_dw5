@@ -15,6 +15,7 @@ gem 'simple_form'
 gem 'materialize-sass'
 gem 'materialize-form'
 
+
 group :production do
   gem 'redis', '~>3.2'
   gem 'pg'

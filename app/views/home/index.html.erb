@@ -14,15 +14,17 @@
     <div class="row">
       <div class="col s12 m5">
         <div class="card-panel teal orange darken-1">
-          <span class="white-text">I am a very simple card. I am good at containing small bits of information.
-          I am convenient because I require little markup to use effectively. I am similar to what is called a panel in other frameworks.
+          <span class="white-text">Welcome to Mr. Condominia. The easiest way to manage your condominiums.
+           <% if !current_admin and !current_resident %>  
+           Try right now! 
+           <li class="waves-effect waves-light btn btn-signup"><%= link_to "Sign Up as an Admin", new_admin_registration_path %></li>
+          <% end %>
           </span>
         </div>
       </div>
       <div class="col s12 m5" style="float: right">
         <div class="card-panel teal cyan darken-4">
-          <span class="white-text">I am a very simple card. I am good at containing small bits of information.
-          I am convenient because I require little markup to use effectively. I am similar to what is called a panel in other frameworks.
+          <span class="white-text"> Or you can ask the administrator of your condominium to use our website and sign up you as an resident.  
           </span>
         </div>
       </div>
@@ -32,15 +34,13 @@
     <div class="row">
       <div class="col s12 m5">
         <div class="card-panel teal orange darken-1">
-          <span class="white-text">I am a very simple card. I am good at containing small bits of information.
-          I am convenient because I require little markup to use effectively. I am similar to what is called a panel in other frameworks.
+          <span class="white-text"> Save time and efforts with us! Do not need to use a lot of tables anymore, just this site!
           </span>
         </div>
       </div>
       <div class="col s12 m5" style="float: right">
         <div class="card-panel teal cyan darken-4">
-          <span class="white-text">I am a very simple card. I am good at containing small bits of information.
-          I am convenient because I require little markup to use effectively. I am similar to what is called a panel in other frameworks.
+          <span class="white-text">As an resident signed in a condominium you can keep up with costs and
           </span>
         </div>
       </div>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171113171554) do
+ActiveRecord::Schema.define(version: 20171121194231) do
 
   create_table "admins", force: :cascade do |t|
     t.string "name"
@@ -60,8 +60,10 @@ ActiveRecord::Schema.define(version: 20171113171554) do
     t.integer "condominium_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "resident_id"
     t.index ["admin_id"], name: "index_messages_on_admin_id"
     t.index ["condominium_id"], name: "index_messages_on_condominium_id"
+    t.index ["resident_id"], name: "index_messages_on_resident_id"
   end
 
   create_table "residents", force: :cascade do |t|

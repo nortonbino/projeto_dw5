@@ -1,3 +1,5 @@
+<div class="container">
+	
 <%= provide(:title, 'Sign Up Resident') %>
 
 <%= simple_form_for(@resident, :url => admins_condominium_residents_path(@condominium)) do |f| %>
@@ -13,3 +15,4 @@
     <%= f.button :submit %>
   </div>
 <% end %>
+</div>

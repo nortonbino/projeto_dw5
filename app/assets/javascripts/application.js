@@ -17,6 +17,7 @@
 //= require materialize-sprockets
 //= require materialize-form
 
+
 //= require action_cable
 //= require cable
 //= require messages

@@ -4,7 +4,7 @@
   <div class="panel panel-default">
     <% if @messages.any? %>
       <div class="panel-body" id="messages">
-        <%= render @messages %>
+        <%= render "shared/messages/message" %>
       </div>
     <%else%>
       <div class="panel-body" id="messages">
@@ -12,5 +12,5 @@
     <%end%>
   </div>
 
-  <%= render partial: 'message_form', locals: {message: @message}%>
+  <%= render partial: 'shared/messages/message_form', locals: {message: @message}%>
 </div>
