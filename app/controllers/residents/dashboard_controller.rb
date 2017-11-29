@@ -1,12 +1,18 @@
 class Residents::DashboardController < ApplicationController	 
 	before_action :authenticate_resident!
 	
-	before_action :set_condominium
+  before_action :set_condominium, only: [:show]
+	before_action :set_resident
+  
 
   def index
-  	@condominium
+    @condominia = @resident.condominia
+  end
 
-  	@my_date = params[:date].nil? ? Date.today : Date.new(params[:date][:year].to_i, params[:date][:month].to_i)
+  def show
+    @condominium
+
+    @my_date = params[:date].nil? ? Date.today : Date.new(params[:date][:year].to_i, params[:date][:month].to_i)
     @my_date = @my_date - @my_date.day + 1  
     @fees = @condominium.fees.where('lastinstallment > ?', @my_date).where('firstinstallment <= ?', @my_date)
 
@@ -15,18 +21,20 @@ class Residents::DashboardController < ApplicationController
     else
      @condominium.fees.where('lastinstallment > ?', @my_date).where('firstinstallment <= ?', @my_date) 
     end
-
   end
 
-  def show
-  	@fee = @condominium.fees.find(params[:fee_id])
-  end
+def show_fee
+    @fee = @condominium.fees.find(params[:fee_id])
+end
 
 
 private
 
   def set_condominium
-    cond = current_resident.condominium_id
-  	@condominium = Condominium.find(cond)
+    @condominium = Condominium.find(params[:id])
+  end
+
+  def set_resident
+    @resident = current_resident
   end
 end

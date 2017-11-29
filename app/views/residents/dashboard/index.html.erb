@@ -1,93 +1,27 @@
-<div class="container resident-show">
-
-    
-<p id="notice"><%= notice %></p>
-<div class="row">
-
-  <div class="col l6">    
-  <%= image_tag(@condominium.avatar.url) %>
-  </div>
-<div class="col l6">
-
-<p>
-  <strong>Name:</strong>
-  <%= @condominium.name %>
-</p>
-
-<p>
-  <strong>Number of proprieties:</strong>
-  <%= @condominium.number_proprieties %>
-</p>
-
-<p>
-  <strong>Address:</strong>
-  <%= @condominium.address %>
-</p>
-
-<div class="row button-bottom">
-  <div class="col s6">
-<%= button_to 'Edit', edit_admins_condominium_path(@condominium), class: "btn  light-blue accent-4", :method => :get %>
-  </div>
-  <div class="col s6">
-<%= button_to 'Back', admins_condominia_path, class: "btn  cyan darken-4", :method => :get %>
-  </div>
-
-</div>
-</div>
-</div>
+<% @condominia.each do |condominium| %>
 
 
-<p id="notice"><%= notice %></p>
+       <div class="col s12 m7 container admin-card">
+    <div class="card horizontal">
+      <div class="card-image">
+        <%= image_tag(condominium.avatar.thumb.url) %>
+      </div>
+      <div class="card-stacked">
+        <div class="card-content">
+            <h5>Name</h5>
+            <p><%= condominium.name %></p>
 
-<div class="container">
-  
-  <div class="row">
-    <form class="col s12">
-      <div class="row">
-        <div class="input-field col s12">
-            <%= text_field_tag :term %>
-            <%= button_to 'Search' %>
+            <h5>Number proprieties</h5>
+            <p><%= condominium.number_proprieties %></p>
+
+            <h5>Address</h5>
+            <p><%= condominium.address %></p>
+                </div>
+
+                <div class="card-action">
+                <%= button_to 'Show', admins_condominium_path(condominium),  class: "btn  cyan darken-4", :method => :get %>
         </div>
       </div>
-    </form>
+    </div>
   </div>
-
-<form>
-<form>
-   <%= select_date(@my_date, start_year: Date.today.year - 100, end_year: Date.today.year + 5, order: [:month, :year], class: "datepicker") %>
-  <%= button_to 'Search', class: "btn  cyan darken-4"%>
-</form>
-
-
-<h1>Fees <%= @my_date.strftime("%m / %Y") %></h1>
-
-<table class="flat-table">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Installment</th>
-      <th>Value</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-    <% value ||= 0 %>
-  <tbody>    
-    <% @fees.each do |fee| %>
-      <tr>
-        <td><%= fee.name %></td>
-        <td><%= fee.description %></td>
-        <td><%= @my_date.month - fee.firstinstallment.month + 1 %>  / <%= fee.installment  %></td>
-        <td><%= fee.value %></td>
-        <td><%= button_to 'Show', residents_path(fee.id), :method => :get %></td>
-      </tr>
-        <% value += fee.value %>   
-    <% end %>
-  </tbody>
-</table>
-      <h2> Value per propriety <%= (value/@condominium.number_proprieties).round(2) %> </h2>
-<br>
-</div>
-</div>
-
+      <% end %>

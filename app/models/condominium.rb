@@ -1,7 +1,7 @@
 class Condominium < ApplicationRecord
 	belongs_to :admin
+	has_and_belongs_to_many :residents
 	has_many :fees
-	has_many :residents
 	has_many :messages
 
 
