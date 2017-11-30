@@ -16,13 +16,18 @@ class Admins::MessagesController < ApplicationController
     end
   end
 
+  def broadcastMessageUpdated
+    data = { id: @message.id, completed: @message.save? }  
+    
+    ActionCable.server.broadcast "condominium:#{@condominium.id}:messages", data
+  end
+
   private
     def set_condominium
      @condominium = Condominium.find(params[:condominium_id])
     end
 
-
-      def message_params
+    def message_params
       params.require(:message).permit(:text, :admin_id, :condominium_id)
     end
 end

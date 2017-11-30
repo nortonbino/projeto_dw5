@@ -9,15 +9,28 @@
 //
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
-//
+
 //= require jquery
 //= require rails-ujs
 //= require turbolinks
 
+// Materialize
+//-------------------
 //= require materialize-sprockets
 //= require materialize-form
 
+// Config files
+//--------------------
+//= require config/namespace
 
+// ActionCable files
+//-----------------------
 //= require action_cable
-//= require cable
-//= require messages
+//= require config/action_cable
+//= require channels/users/task
+//= require channels/users/load
+
+// App files
+//-----------------------
+//= require users/events
+//= require users/functions

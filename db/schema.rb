@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171121194231) do
+ActiveRecord::Schema.define(version: 20171127194933) do
 
   create_table "admins", force: :cascade do |t|
     t.string "name"
@@ -41,6 +41,13 @@ ActiveRecord::Schema.define(version: 20171121194231) do
     t.index ["admin_id"], name: "index_condominia_on_admin_id"
   end
 
+  create_table "condominia_residents", force: :cascade do |t|
+    t.integer "condominium_id"
+    t.integer "resident_id"
+    t.index ["condominium_id"], name: "index_condominia_residents_on_condominium_id"
+    t.index ["resident_id"], name: "index_condominia_residents_on_resident_id"
+  end
+
   create_table "fees", force: :cascade do |t|
     t.float "value"
     t.integer "installment"
@@ -68,7 +75,6 @@ ActiveRecord::Schema.define(version: 20171121194231) do
 
   create_table "residents", force: :cascade do |t|
     t.string "name"
-    t.integer "condominium_id"
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -81,7 +87,6 @@ ActiveRecord::Schema.define(version: 20171121194231) do
     t.string "last_sign_in_ip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["condominium_id"], name: "index_residents_on_condominium_id"
     t.index ["email"], name: "index_residents_on_email", unique: true
     t.index ["reset_password_token"], name: "index_residents_on_reset_password_token", unique: true
   end
