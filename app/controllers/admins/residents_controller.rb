@@ -10,12 +10,25 @@ class Admins::ResidentsController < ApplicationController
   end
 
   def new
-  	@resident = @condominium.residents.build
+    @resident_by_email = search_by_email(params[:resident_mail])
+
+    # Valida se o residente já existe na lista do condominio  
+    if @condominium.residents.include?(@resident_by_email)
+      render :new 
+    else
+      # Valida se o residente já existe no banco de dados 
+      if @resident_by_email
+        @condominium.residents << @resident_by_email
+        redirect_to admins_condominium_path(@condominium) 
+      end
+    end
+  	
+    @resident = @condominium.residents.build
   end
 
   def create
   	@resident = @condominium.residents.build resident_params
-
+    @condominium.residents << @resident
   	if @resident.save
   		flash[:success] = "Resident created"
   		redirect_to admins_condominium_path(@condominium)
@@ -23,6 +36,10 @@ class Admins::ResidentsController < ApplicationController
   		flash.now[:error] = "Something went wrong"
   		render :new
   	end
+  end
+
+  def search_by_email(email)
+    Resident.find_by_email(email)
   end
 
   private

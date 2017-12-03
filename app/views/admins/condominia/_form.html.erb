@@ -1,4 +1,4 @@
-<%= form_with(model: condominium, url: admins_condominia_path) do |form| %>
+  <%= form_with(model: condominium, url: admins_condominia_path) do |form| %>
   <% if condominium.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(condominium.errors.count, "error") %> prohibited this condominium from being saved:</h2>

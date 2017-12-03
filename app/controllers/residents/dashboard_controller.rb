@@ -31,7 +31,7 @@ end
 private
 
   def set_condominium
-    @condominium = Condominium.find(params[:id])
+    @condominium = Condominium.find(params[:condominium_id])
   end
 
   def set_resident

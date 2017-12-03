@@ -1,3 +1,5 @@
+<div class="container">
+  
 <%= form_with(model: fee, url: admins_condominium_fees_path(@condominium)) do |form| %>
   <% if fee.errors.any? %>
     <div id="error_explanation">
@@ -36,3 +38,4 @@
     <%= form.submit %>
   </div>
 <% end %>
+</div>

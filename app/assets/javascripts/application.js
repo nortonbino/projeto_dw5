@@ -27,10 +27,10 @@
 //-----------------------
 //= require action_cable
 //= require config/action_cable
-//= require channels/users/task
-//= require channels/users/load
+//= require channels/admins/message
+//= require channels/admins/load
 
 // App files
 //-----------------------
-//= require users/events
-//= require users/functions
+//= require admins/events
+// require admins/functions
