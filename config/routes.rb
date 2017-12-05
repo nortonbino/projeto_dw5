@@ -5,10 +5,14 @@ Rails.application.routes.draw do
 
   devise_for :residents
   namespace :residents do
-    get 'dashboard/index'
+    #get 'dashboard/index'
     root to: 'dashboard#index'
-    get 'condominia/:condominium_id', to: 'dashboard#show'
-    get 'messages/index'
+    
+    resources :condominia, only: :show do    
+      resources :messages, only: :index 
+    end  
+    
+      get 'condominia/:condominium_id', to: 'dashboard#show'
     get 'condominia/:condominium_id/:fee_id', to: 'dashboard#show_fee'
   end
 
@@ -18,7 +22,7 @@ Rails.application.routes.draw do
       resources :condominia do
         resources :fees
         resources :residents
-        resources :messages
+        resources :messages, only: :index
         get "/send_email", to: 'condominia#send_email', as: :send_email
       end
   end

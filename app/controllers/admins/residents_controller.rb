@@ -38,6 +38,12 @@ class Admins::ResidentsController < ApplicationController
   	end
   end
 
+  def destroy
+    # @resident.destroy
+    flash[:success] = 'resident was successfully destroyed.'
+    redirect_to admins_condominium_residents_path
+  end
+
   def search_by_email(email)
     Resident.find_by_email(email)
   end
@@ -53,7 +59,7 @@ class Admins::ResidentsController < ApplicationController
     end
 
    def resident_params
-   		params.require(:resident).permit(:email, :password, :password_confirmation)
+   		params.require(:resident).permit(:name, :email, :password, :password_confirmation)
    end
 
 end

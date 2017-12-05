@@ -9,6 +9,6 @@ class MessagesChannel < ApplicationCable::Channel
   end
 
   def speak(data)
-    Message.create! text: data['message']
+    Message.create! resident_id: current_user.id, text: data['message'], condominium_id: params['condominium_id']
   end
 end

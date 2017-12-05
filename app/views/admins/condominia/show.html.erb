@@ -78,15 +78,10 @@
 
 <%= button_to 'New Fee', new_admins_condominium_fee_path(@condominium),   class: "btn  cyan darken-4", :method => :get %>
 
-
 <%= button_to 'New Resident', new_admins_condominium_resident_path(@condominium),   class: "btn  cyan darken-4", :method => :get %>
 
 <%= button_to 'Send Email(s)', admins_condominium_send_email_path(@condominium),   class: "btn  cyan darken-4", :method => :get %>
 
-
-<% @residents.each do |r| %>
-<p><%= r.email %></p>
-<% end %>
 </div>
 
 </div>

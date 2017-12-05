@@ -1,16 +1,16 @@
-<div id="condominium-show" data-condominium-id="<%= @condominium.id %>">
+<div id="condominium-chat-admins" data-condominium-id="<%= @condominium.id %>">
   <div class="row col-md-8 col-md-offset-2">
-    <div class="panel panel-default">
-      <% if @messages.any? %>
-        <div class="panel-body" id="messages">
-          <%= render "shared/messages/message" %>
+    <div class="panel-body" id="messages">
+      <div class="panel-body" id="messages">
+        <div style="margin-bottom: 30px">
+          <% @messages.each do |message| %>
+            <div class="container">
+              <%= render "shared/messages/message", :message => message %>
+            </div>
+          <% end %>
         </div>
-      <%else%>
-        <div class="panel-body" id="messages">
-        </div>
-      <%end%>
+      </div>
     </div>
-
-    <%= render partial: 'shared/messages/message_form', locals: {message: @message}%>
   </div>
+  <%= render partial: 'shared/messages/message_form', locals: {message: @message}%>
 </div>

@@ -18,14 +18,13 @@ class Residents::MessagesController < ApplicationController
   end
 
   private
-    def set_condominium
-    cond = current_resident.condominium_id
-  	@condominium = Condominium.find(cond)
+  
+  def set_condominium
+    @condominium = Condominium.find(params[:condominium_id])
   end
 
-
-      def message_params
-      params.require(:message).permit(:text, :resident_id, :condominium_id)
-    end
+  def message_params
+    params.require(:message).permit(:text, :resident_id, :condominium_id)
+  end
 
 end

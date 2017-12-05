@@ -1,22 +1,20 @@
 <% @condominia.each do |condominium| %>
-
-
-       <div class="col s12 m7 container admin-card">
+  <div class="col s12 m7 container admin-card">
     <div class="card horizontal">
       <div class="card-image">
         <%= image_tag(condominium.avatar.thumb.url) %>
       </div>
       <div class="card-stacked">
         <div class="card-content">
-            <h5>Name</h5>
-            <p><%= condominium.name %></p>
+          <h5>Name</h5>
+          <p><%= condominium.name %></p>
 
-            <h5>Number proprieties</h5>
-            <p><%= condominium.number_proprieties %></p>
+          <h5>Number proprieties</h5>
+          <p><%= condominium.number_proprieties %></p>
 
-            <h5>Address</h5>
-            <p><%= condominium.address %></p>
-                </div>
+          <h5>Address</h5>
+          <p><%= condominium.address %></p>
+        </div>
 
                 <div class="card-action">
                 <%= button_to 'Show', residents_path(condominium),  class: "btn  cyan darken-4", :method => :get %>
