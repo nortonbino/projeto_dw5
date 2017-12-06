@@ -19,13 +19,18 @@
     
     <%= render 'layouts/navbar' %>
 
-<!--       <p class="notice"><%= notice %></p>
-       <p class="alert"><%= alert %></p>
--->
+    <div id="card-alert" class="card green lighten-5 alert-notice">
+        <p class="notice"><%= notice %></p>
+    </div>
+
+    <div id="card-alert" class="card red lighten-5 alert-notice">
+        <p class="alert"><%= alert %></p>
+    </div>
+
 
     <%= yield %>
 
-    <!--%= render 'layouts/footer' %-->
+    <%= render 'layouts/footer' %>
 
   </body>
 </html>

@@ -1,5 +1,5 @@
 MRCONDOMINIA.cable.message = ->
-  obj = $('#condominium-chat-admins')
+  obj = $('#condominium-chat')
   return unless obj.length > 0
 
   id = obj.data('condominium-id')
@@ -21,4 +21,4 @@ MRCONDOMINIA.cable.message = ->
     renderMessage: (data) ->
       message = data.message
       msg = "<div class='container'><p><b>" + message.user + ": </b>" + message.text + "</p></div>"
-      $('#messages').append msg
+      $('#chat-messages').append msg

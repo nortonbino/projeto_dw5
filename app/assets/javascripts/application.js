@@ -27,12 +27,9 @@
 //-----------------------
 //= require action_cable
 //= require config/action_cable
-//= require channels/residents/messages
-//= require channels/residents/load
-// require channels/admins/messages
-// require channels/admins/load
+//= require channels/lib/chat/messages
+//= require channels/lib/chat/load
 
 // App files
 //-----------------------
-//= require residents/messages
-// require admins/messages
+//= require lib/chat/messages

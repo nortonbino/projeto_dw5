@@ -9,6 +9,14 @@ class MessagesChannel < ApplicationCable::Channel
   end
 
   def speak(data)
-    Message.create! resident_id: current_user.id, text: data['message'], condominium_id: params['condominium_id']
+    attributes = { text: data['message'], condominium_id: params['condominium_id']} 
+    
+    if current_user.is_a? Admin
+      attributes[:admin_id] = current_user.id
+    else
+      attributes[:resident_id] = current_user.id
+    end
+
+    Message.create! attributes
   end
 end

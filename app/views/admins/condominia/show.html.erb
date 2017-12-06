@@ -27,6 +27,20 @@
   <div class="col s6">
 <%= button_to 'Back', admins_condominia_path,  class: "btn  cyan darken-4", :method => :get %>
 </div>
+  <div class="col s6">
+<%= button_to 'New Fee', new_admins_condominium_fee_path(@condominium),   class: "btn  cyan darken-4", :method => :get %>
+</div>
+  <div class="col s6">
+<%= button_to 'New Resident', new_admins_condominium_resident_path(@condominium),   class: "btn  cyan darken-4", :method => :get %>
+</div>
+  <div class="col s6">
+<%= button_to 'Send Email(s)', admins_condominium_send_email_path(@condominium),   class: "btn  cyan darken-4", :method => :get %>
+</div>
+  <div class="col s6">
+<%= button_to 'Chat', admins_condominium_messages_path(@condominium),   class: "btn  cyan darken-4", :method => :get %>
+</div>
+
+
 </div>
 </div>
 </div>
@@ -75,12 +89,6 @@
 </table>
       <h2> Value per propriety <%= (value/@condominium.number_proprieties).round(2) %> </h2>
 <br>
-
-<%= button_to 'New Fee', new_admins_condominium_fee_path(@condominium),   class: "btn  cyan darken-4", :method => :get %>
-
-<%= button_to 'New Resident', new_admins_condominium_resident_path(@condominium),   class: "btn  cyan darken-4", :method => :get %>
-
-<%= button_to 'Send Email(s)', admins_condominium_send_email_path(@condominium),   class: "btn  cyan darken-4", :method => :get %>
 
 </div>
 

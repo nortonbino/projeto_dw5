@@ -6,28 +6,8 @@ class Admins::MessagesController < ApplicationController
   	@messages = @condominium.messages
   end
 
-  def create
-  	@message = @condominium.messages.build(message_params)
-  	@message.admin_id = current_admin.id
-  	if @message.save
-        redirect_to admins_condominium_messages_path(@condominium)
-      else
-        render :new
-    end
-  end
-
-  def broadcastMessageUpdated
-    data = { id: @message.id, completed: @message.save? }  
-    
-    ActionCable.server.broadcast "condominium:#{@condominium.id}:messages", data
-  end
-
   private
     def set_condominium
      @condominium = Condominium.find(params[:condominium_id])
-    end
-
-    def message_params
-      params.require(:message).permit(:text, :admin_id, :condominium_id)
     end
 end

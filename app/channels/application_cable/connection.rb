@@ -8,6 +8,9 @@ module ApplicationCable
       if resident_signed_in?
         self.current_user = current_resident
         logger.add_tags 'ActionCable', current_user.email
+      elsif admin_signed_in?
+        self.current_user = current_admin
+        logger.add_tags 'ActionCable', current_user.email
       end
     end
   end
