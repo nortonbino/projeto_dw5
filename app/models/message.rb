@@ -1,8 +1,14 @@
 class Message < ApplicationRecord
-  belongs_to :condominium
+	belongs_to :condominium
 
-  	def admin
-  		@admin = Admin.find(self.admin_id)
-  	end
-  private
+	after_create_commit { ChatBroadcastJob.perform_later self }
+
+	def user
+		if admin_id.nil?
+			user ||= Resident.find(resident_id)
+		else
+			user ||= Admin.find(admin_id)
+		end
+		user
+	end
 end

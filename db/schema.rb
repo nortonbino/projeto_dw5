@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171113171554) do
+ActiveRecord::Schema.define(version: 20171203173957) do
 
   create_table "admins", force: :cascade do |t|
     t.string "name"
@@ -41,6 +41,13 @@ ActiveRecord::Schema.define(version: 20171113171554) do
     t.index ["admin_id"], name: "index_condominia_on_admin_id"
   end
 
+  create_table "condominia_residents", force: :cascade do |t|
+    t.integer "condominium_id"
+    t.integer "resident_id"
+    t.index ["condominium_id"], name: "index_condominia_residents_on_condominium_id"
+    t.index ["resident_id"], name: "index_condominia_residents_on_resident_id"
+  end
+
   create_table "fees", force: :cascade do |t|
     t.float "value"
     t.integer "installment"
@@ -54,19 +61,26 @@ ActiveRecord::Schema.define(version: 20171113171554) do
     t.index ["condominium_id"], name: "index_fees_on_condominium_id"
   end
 
+  create_table "home_messages", force: :cascade do |t|
+    t.text "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "messages", force: :cascade do |t|
     t.string "text"
     t.integer "admin_id"
     t.integer "condominium_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "resident_id"
     t.index ["admin_id"], name: "index_messages_on_admin_id"
     t.index ["condominium_id"], name: "index_messages_on_condominium_id"
+    t.index ["resident_id"], name: "index_messages_on_resident_id"
   end
 
   create_table "residents", force: :cascade do |t|
     t.string "name"
-    t.integer "condominium_id"
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -79,7 +93,6 @@ ActiveRecord::Schema.define(version: 20171113171554) do
     t.string "last_sign_in_ip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["condominium_id"], name: "index_residents_on_condominium_id"
     t.index ["email"], name: "index_residents_on_email", unique: true
     t.index ["reset_password_token"], name: "index_residents_on_reset_password_token", unique: true
   end

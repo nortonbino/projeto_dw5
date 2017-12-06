@@ -2,12 +2,15 @@ module ApplicationCable
   class Connection < ActionCable::Connection::Base
     include Devise::Controllers::Helpers
 
-    identified_by :current_admin
+    identified_by :current_user
 
     def connect
-      if admin_signed_in?
-        self.current_admin = current_admin
-        logger.add_tags 'ActionCable', current_admin.email
+      if resident_signed_in?
+        self.current_user = current_resident
+        logger.add_tags 'ActionCable', current_user.email
+      elsif admin_signed_in?
+        self.current_user = current_admin
+        logger.add_tags 'ActionCable', current_user.email
       end
     end
   end

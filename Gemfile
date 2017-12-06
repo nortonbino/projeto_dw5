@@ -6,14 +6,15 @@ gem 'carrierwave', '~> 1.0'
 gem 'sass-rails',   '5.0.6'
 gem 'uglifier',     '3.2.0'
 gem 'coffee-rails', '4.2.2'
-gem 'jquery-rails', '4.3.1'
+gem 'jquery-rails'
 gem 'turbolinks',   '5.0.1'
 gem 'jbuilder',     '2.7.0'
 gem 'devise'
-gem "mini_magick"
+gem 'mini_magick'
 gem 'simple_form'
 gem 'materialize-sass'
 gem 'materialize-form'
+
 
 group :production do
   gem 'redis', '~>3.2'
@@ -30,12 +31,12 @@ group :development do
   gem 'listen',                '3.1.5'
   gem 'spring',                '2.0.2'
   gem 'spring-watcher-listen', '2.0.1'
-    gem 'capistrano',         require: false
-    gem 'capistrano-rvm',     require: false
-    gem 'capistrano-rails',   require: false
-    gem 'capistrano-bundler', require: false
-    gem 'capistrano3-puma',  github: "seuros/capistrano-puma", require: false
-    gem 'capistrano-rails-db',require: false
+  gem 'capistrano',         require: false
+  gem 'capistrano-rvm',     require: false
+  gem 'capistrano-rails',   require: false
+  gem 'capistrano-bundler', require: false
+  gem 'capistrano3-puma',  github: "seuros/capistrano-puma", require: false
+  gem 'capistrano-rails-db',require: false
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

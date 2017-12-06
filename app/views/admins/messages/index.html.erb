@@ -1,16 +1,1 @@
-<div class="row col-md-8 col-md-offset-2">
-  <h1>Condominium chat</h1>
-
-  <div class="panel panel-default">
-    <% if @messages.any? %>
-      <div class="panel-body" id="messages">
-        <%= render @messages %>
-      </div>
-    <%else%>
-      <div class="panel-body" id="messages">
-      </div>
-    <%end%>
-  </div>
-
-  <%= render partial: 'message_form', locals: {message: @message}%>
-</div>
+<%= render 'shared/chat/index.html.erb' %>

@@ -1,0 +1,16 @@
+<form>
+	<label>Search the resident by email</label>
+	<%= text_field_tag :resident_mail %>
+	<%= button_to 'Search', class: "btn  cyan darken-4" %>
+</form>
+
+<% if @resident_by_email %>
+
+<% @resident_by_email.each do |resident| %>
+<tr>
+	<td><%= resident.name %></td>
+	<td><%= resident.email %></td>
+	<td><%= button_to 'Add resident', admins_condominium_add_resident_path(resident), class: "btn  cyan darken-4", :method => :get %>
+	</tr> 
+	<% end %>
+	<% end %>

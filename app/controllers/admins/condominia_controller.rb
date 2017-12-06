@@ -1,14 +1,21 @@
 class Admins::CondominiaController < ApplicationController
   before_action :authenticate_admin!
   
-  before_action :set_admin
   before_action :set_condominium, only: [:show, :edit, :update, :destroy]
 
   def index
-    @condominia = @admin.condominia
+    @condominia = current_admin.condominia
   end
 
   def show
+
+    unless current_admin.id == @condominium.admin_id
+      flash[:notice] = "You don't have access to that condominium!"
+      redirect_to admins_condominia_url
+      return
+    end
+
+
     @my_date = params[:date].nil? ? Date.today : Date.new(params[:date][:year].to_i, params[:date][:month].to_i)
     @my_date = @my_date - @my_date.day + 1  
     @fees = @condominium.fees.where('lastinstallment > ?', @my_date).where('firstinstallment <= ?', @my_date)
@@ -73,9 +80,6 @@ class Admins::CondominiaController < ApplicationController
   end
 
   private
-    def set_admin
-     @admin = current_admin
-    end
 
     # Use callbacks to share common setup or constraints between actions.
     def set_condominium
