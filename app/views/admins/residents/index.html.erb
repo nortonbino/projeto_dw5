@@ -1,0 +1,18 @@
+<div class="container">
+<%= button_to 'Add Resident', new_admins_condominium_resident_path(@condominium), class: "btn cyan darken-4", method: :get %>
+
+<% @residents.each do |resident| %>
+ <div class="col s12 m7 admin-card">
+    <div class="card horizontal">
+      <div class="card-stacked">
+        <div class="card-content">
+            <h6>Name: <%= resident.name %></h6>
+            <h6>Email: <%= resident.email %></h6>
+                </div>
+                <!--%= button_to 'Remove', residents_path, class: "btn  cyan darken-4" %-->
+            <!--%= button_to 'Destroy', admins_condominium_resident_path(resident),  class: "btn  cyan darken-4", method: :delete, data: { confirm: 'Are you sure?' } %-->
+        </div>
+      </div>
+    </div>
+      <% end %>
+</div>

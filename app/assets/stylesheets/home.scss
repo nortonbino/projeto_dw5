@@ -4,8 +4,17 @@
 
 html, body{
     background-color: #EBEBEB;
-    weigth: 100%;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
 }
+
+.alert-notice{
+    position: absolute;
+    z-index: +1;
+    margin-top: 50px;
+}
+
 
 .imageBar{
   top: 0;
@@ -31,7 +40,6 @@ nav ul a.btn:hover{
     color: #FF9933;
     text-decoration: none;
 }
-
 
 .nav-wrapper{
     background-color: #FF9933;
@@ -94,16 +102,15 @@ nav ul a.btn:hover{
     color: #253858;
 }
 
-.chat-box{
-        overflow-y:auto;
-        position:   relative;
-        width:      100%;
-        height:     400px;
+main {
+flex: 1 0 auto;
 }
 
-.chatmessages{
-        overflow-y:   auto;
-        position:   relative;
-        bottom:     0;
-        max-height: 200px;
+.margin-footer{
+  margin-top: 50px;
+}
+
+.btn {
+    margin-top: 5px;
+    margin-bottom: 5px;
 }

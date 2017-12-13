@@ -2,18 +2,16 @@
 	
 <%= provide(:title, 'Sign Up Resident') %>
 
-
-<form>
-
-  <%= text_field_tag :resident_mail %>
-  <%= button_to 'Add', class: "btn  cyan darken-4" %>
-</form>
-
-
-<% if !@resident_by_email %>
-
-<h5> This resident doesn't exist, create an account to him </h5>
-<%= simple_form_for(@resident, :url => admins_condominium_residents_path(@condominium)) do |f| %>
+  <form>
+    <label>Add the resident by email</label>
+    <%= text_field_tag :resident_mail %>
+    <%= button_to 'Add', new_admins_condominium_resident_path(@condominium),class: "btn cyan darken-4" %>
+  </form>
+  
+  <% if !@resident_by_email %>
+  
+  <h5> If the resident doesn't exist create an account to him </h5>
+  <%= simple_form_for(@resident, :url => admins_condominium_residents_path(@condominium)) do |f| %>
 
   <div class="form-inputs">
     <%= f.input :name %>
@@ -23,11 +21,16 @@
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit %>
+    <%= f.button :submit, :class => "btn cyan darken-4" %>
   </div>
+<<<<<<< Updated upstream
 <% end %>
 
 
 <% end %>
+=======
+  <% end %>
+  <% end %>
+>>>>>>> Stashed changes
 
 </div>
