@@ -42,7 +42,8 @@ class Admins::CondominiaController < ApplicationController
         flash[:success] = 'Condominium was successfully created.'
         redirect_to admins_condominium_path(@condominium)
     else
-        render :new 
+        flash[:error] = 'There are some errors in the form.'
+        redirect_to new_admins_condominium_path
     end
   end
 
@@ -73,10 +74,6 @@ class Admins::CondominiaController < ApplicationController
     
     flash[:success] = 'Email enviado com sucesso'
     redirect_back(fallback_location: root_path)
-  end
-
-  def residents
-    @residents = @condominium.residents
   end
 
   private

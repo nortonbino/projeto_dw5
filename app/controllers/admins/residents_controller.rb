@@ -14,29 +14,29 @@ class Admins::ResidentsController < ApplicationController
 
     # Valida se o residente já existe na lista do condominio  
     if @condominium.residents.include?(@resident_by_email)
-      render :new 
-      flash[:success] = "Resident is already in the condominium"
+      flash[:error] = "Resident is already in the condominium"
+      redirect_to new_admins_condominium_resident_path(@condominium)
     else
       # Valida se o residente já existe no banco de dados 
       if @resident_by_email
         @condominium.residents << @resident_by_email
-        redirect_to admins_condominium_path(@condominium)
         flash[:success] = "Resident added at the condominium" 
+        redirect_to admins_condominium_residents_path(@condominium)
       end
     end
     
-    @resident = @condominium.residents.build
+    @resident = @condominium.residents.build  
   end
 
   def create
   	@resident = @condominium.residents.build resident_params
-    @condominium.residents << @resident
     if @resident.save
-      flash[:success] = "Resident created"
-      redirect_to admins_condominium_path(@condominium)
+      @condominium.residents << @resident
+      flash[:success] = "Resident created and added to the condominium"
+      redirect_to admins_condominium_residents_path(@condominium)
     else
-      flash.now[:error] = "Something went wrong"
-      render :new
+      flash[:error] = "Make sure all the fields are correct"
+      redirect_to new_admins_condominium_resident_path
     end
   end
 
