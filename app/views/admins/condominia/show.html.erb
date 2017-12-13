@@ -31,6 +31,7 @@
 <%= button_to 'New Fee', new_admins_condominium_fee_path(@condominium),   class: "btn  cyan darken-4", :method => :get %>
 </div>
   <div class="col s6">
+  <%= button_to 'Resident List', admins_condominium_residents_path(@condominium),   class: "btn  cyan darken-4", :method => :get %>
 </div>
   <div class="col s6">
 <%= button_to 'Send Email(s)', admins_condominium_send_email_path(@condominium),   class: "btn  cyan darken-4", :method => :get %>
